@@ -19,6 +19,14 @@
         "https://order.nidin.shop/*"
       ],
       "js": [
+        "content/core.js",
+        "content/order-data.js",
+        "content/storage.js",
+        "content/order-page.js",
+        "content/page-ui.js",
+        "content/menu-dom.js",
+        "content/cart-validation.js",
+        "content/menu-workflow.js",
         "content/app.js"
       ],
       "run_at": "document_idle",
