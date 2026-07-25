@@ -5,9 +5,10 @@
 - 名稱：`Nidin 訂單工具（非官方）`
 - 語言：繁體中文（`zh_TW`）
 - 建議分類：生產力工具
-- 開發者顯示名稱：`[待填]`
-- 支援信箱：`[待填]`
-- 隱私權政策網址：`[待填：公開 HTTPS 網址]`
+- 開發者顯示名稱：`Yu-Bo Zhang`
+- 支援信箱：`weber89521@gmail.com`
+- 隱私權政策網址：`https://github.com/Zhang-Yu-Bo/nidin-order-tools/blob/main/docs/PRIVACY_POLICY.md`
+- 可見性：Public
 
 ## 簡短說明
 
@@ -62,4 +63,3 @@ Extension 不會自動結帳、送出訂單或清空購物車。所有訂單資�
 - 小型宣傳圖：`store-assets/promo-440x280.png`
 - 功能截圖：`store-assets/screenshot-1280x800.png`
 - 選用 marquee：`store-assets/marquee-1400x560.png`
-

@@ -27,6 +27,8 @@ Extension 不讀取密碼、Cookie、登入權杖或信用卡等付款憑證。
 
 Extension 不會把上述資料傳送至開發者、分析服務、廣告服務或任何其他第三方，也不會出售或分享資料。Extension 沒有額外的網路請求或遠端程式碼。
 
+Extension 對使用者資料的使用符合 Chrome Web Store User Data Policy 的 Limited Use requirements：資料只用於提供上述單一用途，不用於廣告或其他無關用途，也不允許開發者或第三方人工讀取。
+
 使用者與 Nidin 網站本身的互動仍受 Nidin 的條款與隱私政策約束；本 extension 與 Nidin 並無官方關係。
 
 ## 權限
@@ -36,7 +38,6 @@ Extension 不會把上述資料傳送至開發者、分析服務、廣告服務�
 
 ## 聯絡方式
 
-發布前請將此段替換為實際且可公開聯絡的支援／隱私信箱：
+如對本隱私權政策或 extension 有疑問，請聯絡：
 
-`[待填：support@example.com]`
-
+`weber89521@gmail.com`
