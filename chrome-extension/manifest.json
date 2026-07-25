@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Nidin 訂單工具（非官方）",
+  "version": "0.4.5",
+  "description": "在 Nidin 訂單頁匯出資料，並於菜單頁驗證後協助重新加入品項。",
+  "minimum_chrome_version": "112",
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://order.nidin.shop/*"
+      ],
+      "js": [
+        "content/app.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false,
+      "world": "ISOLATED"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

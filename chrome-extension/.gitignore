@@ -1,0 +1,8 @@
+.*chrome-profile*/
+.asset-*/
+.smoke-*/
+dist/
+tools/
+*.crx
+*.pem
+*.zip

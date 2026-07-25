@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="280" viewBox="0 0 440 280">
+  <defs>
+    <linearGradient id="background" x1="20" y1="16" x2="425" y2="269" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2196f3"/>
+      <stop offset="1" stop-color="#103f80"/>
+    </linearGradient>
+  </defs>
+  <rect width="440" height="280" fill="url(#background)"/>
+  <circle cx="420" cy="18" r="116" fill="#fff" opacity=".08"/>
+  <circle cx="382" cy="274" r="142" fill="#53c98a" opacity=".12"/>
+  <g transform="translate(40 64)">
+    <rect width="112" height="112" rx="30" fill="#fff" opacity=".98"/>
+    <path d="M32 22h50v70l-8-5-8 5-9-5-8 5-8-5-9 5V22z" fill="#eaf4ff"/>
+    <path d="M42 38h30M42 50h23" fill="none" stroke="#1976d2" stroke-linecap="round" stroke-width="6"/>
+    <path d="m43 69 8 8 20-21" fill="none" stroke="#20a464" stroke-linecap="round" stroke-linejoin="round" stroke-width="7"/>
+  </g>
+  <text x="178" y="111" fill="#fff" font-family="system-ui, 'Noto Sans TC', sans-serif" font-size="28" font-weight="700">Nidin 訂單工具</text>
+  <text x="179" y="145" fill="#dceeff" font-family="system-ui, 'Noto Sans TC', sans-serif" font-size="16">匯出・驗證・安全重新加入</text>
+  <rect x="178" y="166" width="184" height="36" rx="18" fill="#fff" opacity=".14"/>
+  <text x="270" y="190" fill="#fff" font-family="system-ui, 'Noto Sans TC', sans-serif" font-size="14" text-anchor="middle">資料只在本機處理</text>
+</svg>
