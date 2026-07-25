@@ -21,7 +21,12 @@ test('manifest uses MV3 with minimum permissions and exact site scope', () => {
     manifest.content_scripts[0].matches,
     ['https://order.nidin.shop/*']
   );
-  assert.deepEqual(manifest.content_scripts[0].js, ['content/app.js']);
+  assert.ok(manifest.content_scripts[0].js.length > 0);
+  assert.equal(
+    new Set(manifest.content_scripts[0].js).size,
+    manifest.content_scripts[0].js.length
+  );
+  assert.equal(manifest.content_scripts[0].js.at(-1), 'content/app.js');
   assert.equal(manifest.content_scripts[0].run_at, 'document_idle');
   assert.equal(manifest.content_scripts[0].all_frames, false);
   assert.equal(manifest.content_scripts[0].world, 'ISOLATED');
@@ -58,12 +63,15 @@ test('runtime has no remote execution or extra network client', () => {
 });
 
 test('content script and service worker use the same storage channel', () => {
-  const app = fs.readFileSync(path.join(root, 'content/app.js'), 'utf8');
+  const content = manifest.content_scripts
+    .flatMap(entry => entry.js)
+    .map(file => fs.readFileSync(path.join(root, file), 'utf8'))
+    .join('\n');
   const worker = fs.readFileSync(
     path.join(root, 'background/service-worker.js'),
     'utf8'
   );
-  const appChannel = app.match(/storageKey:\s*'([^']+)'/u)?.[1];
+  const appChannel = content.match(/storageKey:\s*'([^']+)'/u)?.[1];
   const workerChannel = worker.match(/const CHANNEL = '([^']+)'/u)?.[1];
   assert.ok(appChannel);
   assert.equal(workerChannel, appChannel);

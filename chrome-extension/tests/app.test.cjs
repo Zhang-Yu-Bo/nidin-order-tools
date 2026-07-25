@@ -5,10 +5,14 @@ const fs = require('node:fs');
 const path = require('node:path');
 const test = require('node:test');
 
-const source = fs.readFileSync(
-  path.resolve(__dirname, '../content/app.js'),
-  'utf8'
+const root = path.resolve(__dirname, '..');
+const manifest = JSON.parse(
+  fs.readFileSync(path.join(root, 'manifest.json'), 'utf8')
 );
+const source = manifest.content_scripts
+  .flatMap(entry => entry.js)
+  .map(file => fs.readFileSync(path.join(root, file), 'utf8'))
+  .join('\n');
 const fixtureHtml = `
   <button class="option"><div>綠茶凍</div></button>
   <button class="option b-border"><div>綠茶凍</div></button>
