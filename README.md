@@ -17,7 +17,7 @@
 2. 開啟 Chrome 的 `chrome://extensions`。
 3. 啟用右上角的「開發人員模式」。
 4. 選擇「載入未封裝項目」。
-5. 指定 [`chrome-extension`](chrome-extension) 資料夾。
+5. 指定此 repository 根目錄（包含 `manifest.json` 的資料夾）。
 6. 若已安裝相同用途的 Tampermonkey 腳本，請先停用，避免介面重複執行。
 
 ## 使用方式
@@ -34,35 +34,34 @@
 - 不讀取密碼、Cookie、登入權杖或付款資料。
 - 不使用遠端程式碼或第三方套件。
 
-詳細內容請參閱[隱私權政策](chrome-extension/docs/PRIVACY_POLICY.md)與[安全設計](chrome-extension/docs/SECURITY.md)。
+詳細內容請參閱[隱私權政策](docs/PRIVACY_POLICY.md)與[安全設計](docs/SECURITY.md)。
 
 ## 專案結構
 
 ```text
-chrome-extension/
-├─ manifest.json       # Manifest V3、權限與載入順序
-├─ background/         # 分頁隔離的暫存資料
-├─ content/            # 訂單、菜單、驗證、介面與路由模組
-├─ tests/              # Node.js 自動測試
-├─ docs/               # 隱私、安全與上架文件
-├─ icons/              # 擴充功能圖示
-└─ store-assets/       # Chrome Web Store 圖像素材
+manifest.json       # Manifest V3、權限與載入順序
+background/         # 分頁隔離的暫存資料
+content/            # 訂單、菜單、驗證、介面與路由模組
+tests/              # Node.js 自動測試
+docs/               # 隱私、安全與上架文件
+icons/              # 擴充功能圖示
+store-assets/       # Chrome Web Store 圖像素材
 ```
 
-網站版面改動時，請先檢查 [`content/core.js`](chrome-extension/content/core.js) 的 `SELECTORS`；商品規格操作集中在 [`content/menu-dom.js`](chrome-extension/content/menu-dom.js)。
+網站版面改動時，請先檢查 [`content/core.js`](content/core.js) 的 `SELECTORS`；商品規格操作集中在 [`content/menu-dom.js`](content/menu-dom.js)。
 
 ## 開發檢查
 
 執行測試：
 
 ```powershell
-node --test chrome-extension/tests/app.test.cjs chrome-extension/tests/manifest.test.cjs chrome-extension/tests/storage.test.cjs
+node --test tests/app.test.cjs tests/manifest.test.cjs tests/storage.test.cjs
 ```
 
 若已安裝 Deno，也可以執行靜態檢查：
 
 ```powershell
-deno lint chrome-extension/background/service-worker.js chrome-extension/content/*.js chrome-extension/tests/*.cjs
+deno lint background/service-worker.js content/*.js tests/*.cjs
 ```
 
 網站互動仍需以「載入未封裝項目」進行人工測試。
