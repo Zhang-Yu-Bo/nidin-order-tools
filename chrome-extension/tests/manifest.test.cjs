@@ -4,6 +4,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const test = require('node:test');
+const vm = require('node:vm');
 
 const root = path.resolve(__dirname, '..');
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'manifest.json'), 'utf8'));
@@ -80,4 +81,43 @@ test('content script and service worker use the same storage channel', () => {
   const workerChannel = worker.match(/const CHANNEL = '([^']+)'/u)?.[1];
   assert.ok(appChannel);
   assert.equal(workerChannel, appChannel);
+});
+
+test('content modules initialize in manifest order', () => {
+  const files = manifest.content_scripts[0].js;
+  const context = vm.createContext({
+    location: { pathname: '/' },
+    document: {
+      documentElement: {},
+      getElementById: () => null
+    },
+    MutationObserver: class {
+      observe() {}
+      disconnect() {}
+    },
+    addEventListener() {},
+    queueMicrotask,
+    setTimeout,
+    clearTimeout
+  });
+
+  for (const file of files.slice(0, -1)) {
+    vm.runInContext(
+      fs.readFileSync(path.join(root, file), 'utf8'),
+      context,
+      { filename: file }
+    );
+  }
+  assert.equal(
+    Object.keys(context.NidinOrderTools).length,
+    files.length - 1
+  );
+
+  const entry = files.at(-1);
+  vm.runInContext(
+    fs.readFileSync(path.join(root, entry), 'utf8'),
+    context,
+    { filename: entry }
+  );
+  assert.equal('NidinOrderTools' in context, false);
 });
